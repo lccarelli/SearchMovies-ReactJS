@@ -12,6 +12,12 @@ class App extends Component {
   _handleResults = (results) => {
     this.setState({results})
   }
+  _renderResults () {
+    const {results} = this.state;
+    return results.map(movie => {
+      return <p key={movie.imdbID}>{movie.Title}</p>
+    })
+  }
 
   render() {
     return (
@@ -23,7 +29,7 @@ class App extends Component {
         </div>
         {this.state.results.length === 0 
           ? <p>NO tenemos resultados</p>
-          : <p>Si tenemos resultados</p>
+          : this._renderResults()
         }
       </div>
     );
