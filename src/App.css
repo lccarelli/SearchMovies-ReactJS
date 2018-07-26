@@ -7,3 +7,16 @@
   display: flex;
   justify-content: center;
 }
+
+.movie-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.movielist-item{
+  justify-content: center;
+  margin-bottom: 24px;
+  width: 48%;
+}

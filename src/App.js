@@ -4,6 +4,7 @@ import './App.css';
 
 import {Title} from './components/Title';
 import SearchForm from './components/SearchForm';
+import MovieList from './components/MovieList';
 
 class App extends Component {
 
@@ -12,12 +13,7 @@ class App extends Component {
   _handleResults = (results) => {
     this.setState({results})
   }
-  _renderResults () {
-    const {results} = this.state;
-    return results.map(movie => {
-      return <p key={movie.imdbID}>{movie.Title}</p>
-    })
-  }
+
 
   render() {
     return (
@@ -29,7 +25,7 @@ class App extends Component {
         </div>
         {this.state.results.length === 0 
           ? <p>NO tenemos resultados</p>
-          : this._renderResults()
+          : <MovieList movies={this.state.results}/>
         }
       </div>
     );
