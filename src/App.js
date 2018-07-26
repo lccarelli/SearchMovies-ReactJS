@@ -8,7 +8,8 @@ import MovieList from './components/MovieList';
 
 class App extends Component {
 
-  state = {results:[]};
+  state = { usedSearch:false,
+            results:[]};
 
   _handleResults = (results) => {
     this.setState({results})
@@ -23,6 +24,7 @@ class App extends Component {
         <div className='SearchForm-wrapper'>
           <SearchForm onResults={this._handleResults}/>
         </div>
+        {this.state.usedSearch}
         {this.state.results.length === 0 
           ? <p>NO tenemos resultados</p>
           : <MovieList movies={this.state.results}/>
