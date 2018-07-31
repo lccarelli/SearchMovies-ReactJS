@@ -15,6 +15,11 @@ class App extends Component {
     this.setState({results})
   }
 
+  _renderResults () {
+    return this.state.results.length === 0 
+      ? <p>NO tenemos resultados</p>
+      : <MovieList movies={this.state.results}/>
+  }
 
   render() {
     return (
@@ -24,11 +29,11 @@ class App extends Component {
         <div className='SearchForm-wrapper'>
           <SearchForm onResults={this._handleResults}/>
         </div>
-        {this.state.usedSearch}
-        {this.state.results.length === 0 
-          ? <p>NO tenemos resultados</p>
-          : <MovieList movies={this.state.results}/>
+        {this.state.usedSearch
+          ? this.renderResults()
+          : <small>Use the form to search a movie</small>
         }
+
       </div>
     );
   }
